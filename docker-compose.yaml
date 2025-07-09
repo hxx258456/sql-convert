@@ -6,7 +6,7 @@ services:
     build: .
     container_name: sql-converter-api-dev
     ports:
-      - "8001:8000"
+      - "18001:8000"
     environment:
       - PYTHONUNBUFFERED=1
       - UVICORN_WORKERS=4
