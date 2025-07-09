@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  # 可选：开发环境，支持代码热重载
+  sql-converter-dev:
+    build: .
+    container_name: sql-converter-api-dev
+    ports:
+      - "8001:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - UVICORN_WORKERS=4
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./main.py:/app/main.py
+      - ./pyproject.toml:/app/pyproject.toml
+      - ./uv.lock:/app/uv.lock
+    command: ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    restart: always
