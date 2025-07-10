@@ -100,6 +100,7 @@ async def parse_sql(request: SQLParseRequest):
     Returns:
         SQLParseResponse with parsed structure or error message
     """
+    print(f"{request=}")
     try:
         # Parse MySQL SQL
         parsed = parse(request.mysql_sql, dialect=MySQL)
